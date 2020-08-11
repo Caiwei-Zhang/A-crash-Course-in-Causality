@@ -1,0 +1,169 @@
+\documentclass[UTF8,a4paper,15pt,titlepage,oneside]{ctexbook}
+% -- text font --
+% compile using Xelatex
+
+%\setmainfont{Microsoft YaHei}  % 微软雅黑
+%\setmainfont{YouYuan}  % 幼圆
+%\setmainfont{NSimSun}  % 新宋体
+%\setmainfont{KaiTi}    % 楷体
+%\setmainfont{SimSun}   % 宋体
+%\setmainfont{SimHei}   % 黑体
+% 报错 \newCJKfontfamily\kaishu{KaiTi}[AutoFakeBold]
+
+
+\usepackage{geometry}  %设置页边距
+\geometry{a4paper,left=3cm,right=3cm,top=2cm,bottom=3cm} %\geometry{a4paper,scale=0.7}设置纸张为A4，版心占页面长度的比例为80%；scale也可以改为ratio，表示版面边距占页面长度的比例。
+% \geometry{a4paper,left=2cm,right=2cm,top=1cm,bottom=1cm} 指定设置上下左右页边距
+
+%重置chapter标题格式
+\usepackage{titlesec}
+\titleformat{\chapter}[block]{\LARGE\bfseries}{Chapter \arabic{chapter}}{1em}{}[]
+\titleformat{\section}[block]{\Large\bfseries}{\arabic{chapter}.\arabic{section}}{1em}{}[]
+
+\usepackage{times}
+\usepackage{mathpazo}
+%\usepackage{fourier}
+%\usepackage{charter}
+%\usepackage{helvet}
+\usepackage{amsmath, amsfonts, amssymb} % math equations, symbols
+\iffalse
+\makeatletter
+\renewcommand\normalsize{%
+	\@setfontsize\normalsize\@xpt\@xiipt
+	\abovedisplayskip 3\p@ \@plus2\p@ \@minus5\p@
+	\abovedisplayshortskip \z@ \@plus3\p@
+	\belowdisplayshortskip 3\p@ \@plus3\p@ \@minus3\p@
+	\belowdisplayskip \abovedisplayskip
+	\let\@listi\@listI}
+\makeatother
+\fi
+
+\usepackage{mathrsfs}    %用于产生一种数学用的花体字
+\usepackage{bm}          %专门处理数学粗体的bm宏包
+%\usepackage[cmintegrals]{newtxmath}%高质量数学字体/黑体c
+\usepackage[english]{babel}
+\usepackage{color,soul}      % color content
+\sethlcolor{orange}
+\setstcolor{blue}
+\setulcolor{red} 
+\usepackage{float}      %设置图片浮动位置的宏包
+\usepackage{caption}
+\usepackage{graphicx, subfigure}
+\usepackage{url}        % hyperlinks
+\usepackage{bm}         % bold type for equations
+\usepackage{multirow}
+\usepackage{booktabs}
+\usepackage{epstopdf}
+\usepackage{epsfig}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\setenumerate[1]{itemsep=0pt,partopsep=0pt,parsep=\parskip,topsep=5pt}
+\setitemize[1]{itemsep=0pt,partopsep=0pt,parsep=\parskip,topsep=5pt}
+\setdescription{itemsep=0pt,partopsep=0pt,parsep=\parskip,topsep=5pt}
+% 加入序数上标
+\usepackage{engord}
+\newcommand{\ts}{\textsuperscript}
+\usepackage[super]{nth}
+% 插入pdf
+\usepackage{pdfpages}
+
+%超链接宏包
+\usepackage[colorlinks=true,linkcolor=black, filecolor=black,anchorcolor=black,urlcolor=black,citecolor=green]{hyperref}  
+%\usepackage{hyperref}
+%\hypersetup{colorlinks=false, linkbordercolor=black} 
+           	% pdfborderstyle={/S/U/W 1}} 
+%hyperlink borders will be black
+% border style will be underline of width 1pt
+
+%定义新定理、引理、假设环境.
+\usepackage{ntheorem} %
+\newtheorem{thm}{\bfseries Theorem}[section]
+\newtheorem{lm}{\bfseries Lemma}[section]
+\newtheorem{assp}{\bfseries Assumption}
+\newtheorem{ex}{\bfseries Example}[section]
+\newtheorem {note}{\bfseries note}
+
+% 重设图片标题前缀
+\renewcommand{\figurename}{Fig.} %重定义编号前缀词
+%\roman是罗马数字编号，\alph是默认的字母编号，\arabic是阿拉伯数字编号，可按需替换下一行的相应位置
+%\renewcommand {\thefigure} {\thesection{}.\arabic{figure}} %按章节编号
+\captionsetup[figure]{labelfont={bf},name={Fig.},labelsep=period}
+
+% 设置算法框
+\renewcommand{\algorithmicrequire}{ \textbf{Input:}}     % use Input in the format of Algorithm
+\renewcommand{\algorithmicensure}{ \textbf{Initialize:}} % use Initialize in the format of Algorithm
+\renewcommand{\algorithmicreturn}{ \textbf{Output:}}     % use Output in the format of Algorithm
+
+% 设置代码环境
+\setlength{\parindent}{2em} %首行缩进两个汉字距离
+\usepackage{listings} %插入代码
+\usepackage{xcolor} %代码高亮
+\lstset{numbers=none, %设置行号位置
+        basicstyle=\footnotesize, % 设置代码字号.
+        %numberstyle=\tiny, %设置行号大小
+        keywordstyle=\color{blue}, %设置关键字颜色
+        commentstyle=\color[cmyk]{1,0,1,0}, % 设置注释颜色
+        frame=single, %设置边框格式
+        escapeinside=``, %逃逸字符(1左面的键)，用于显示中文
+        breaklines=true, %自动折行
+        extendedchars=false, %解决代码跨页时，章节标题，页眉等汉字不显示的问题
+        %xleftmargin=2em,xrightmargin=2em, aboveskip=1em, %设置边距
+        tabsize=4, %设置tab空格数
+        showspaces=false %不显示空格
+       }
+
+% 定义缩写
+\newcommand{\y}[1]{\textcolor{yellow}{\bf #1}}
+\renewcommand{\r}[1]{\textcolor{red}{ #1}}
+\newcommand{\org}[1]{\textcolor{orange}{\bf #1}}
+\renewcommand{\b}[1]{\textcolor{blue}{\bf #1}}
+\newcommand{\g}[1]{\textcolor{green}{\bf #1}}
+
+ % 设置页眉、页脚
+\usepackage{fancyhdr}  
+\pagestyle{fancy}
+\lhead{Sarah Zhang }
+\chead{}
+\rhead{Faster and better.}
+\lfoot{}
+\cfoot{\thepage}
+\rfoot{}
+
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+%\usepackage{draftwatermark}         % 所有页加水印
+%%\usepackage[firstpage]{draftwatermark} % 只有第一页加水印
+%\SetWatermarkText{Water-Mark}           % 设置水印内容
+%\SetWatermarkText{\includegraphics{fig/ZJDX-WaterMark.eps}}         % 设置水印logo
+%\SetWatermarkLightness{0.9}             % 设置水印透明度 0-1
+%\SetWatermarkScale{1}                   % 设置水印大小 0-1
+
+
+\title{Learning notes}
+\author{张采蔚}
+\date{\today}
+%\includeonly{ch1}
+
+\begin{document}
+	
+	\setcounter{page}{0}
+	\thispagestyle{empty}
+    \maketitle
+    \setcounter{page}{0}
+    \thispagestyle{empty}
+    
+   \setcounter{page}{0}
+   \thispagestyle{empty}
+   \tableofcontents
+   \setcounter{page}{0}
+   \thispagestyle{empty}
+   
+    \include{chapter/ch1}
+    \include{chapter/ch2}
+    \include{chapter/ch3}
+    \include{chapter/ch4}
+    \include{chapter/ch5}
+\end{document}
